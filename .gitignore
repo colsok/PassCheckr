@@ -1,0 +1,6 @@
+# exclude userlists and report directories
+x*
+*.out
+/Userlists/*
+/Reports/*
+/Passlists/Custom.lst
