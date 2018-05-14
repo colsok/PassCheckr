@@ -1,10 +1,5 @@
 # PassCheckr
-######################################################
-######################################################
-################ PASSCHECKER v1.1 ####################
-######################################################
-
-The goal of this script is to try "easy" passwords against
+Simple script designed to try "easy" passwords against
 your active directory users. There are two password lists
 that will be used: 
  1. Common - i.e., Password123
@@ -34,7 +29,7 @@ hardcoded variables that need to be set:
 
 
 Execution is simple:
-./passcheckr.sh <userlist>
+`./passcheckr.sh <userlist>`
 
 
 NOTE:
@@ -51,20 +46,20 @@ environment.
 #######################################################
 
 #SINGLE USER AND SINGLE PASSWORD
-hydra -l <username> -p <password> <IP_address of DC> smb
+`hydra -l <username> -p <password> <IP_address of DC> smb`
 
 #USER AND PASSWORD LIST
-hydra -L <list> -P <list> <IP ADDR> smb
+`hydra -L <list> -P <list> <IP ADDR> smb`
 
 #COMBO LIST
-hydra -C <list> <IP> smb 
+`hydra -C <list> <IP> smb `
 
 #NOTES
 -V  ##Show each attempt
 -o  ##OUTPUT FILE
 
 #EXAMPLE
-hydra -L users/all.lst -P passwords.txt 10.1.1.1 smb -V -o results.out
+`hydra -L users/all.lst -P passwords.txt 10.1.1.1 smb -V -o results.out`
 
 ########################################################
 ########################################################
@@ -72,8 +67,8 @@ hydra -L users/all.lst -P passwords.txt 10.1.1.1 smb -V -o results.out
 ########################################################
 
 #List all LockedOut users
-Search-ADAccount -LockedOut | select name,SamAccountName
+`Search-ADAccount -LockedOut | select name,SamAccountName`
 
 #SETUP ACCOUNTS
-#Export all enabled --> Returns ~6000 accounts
-PS> Get-ADUser -Filter 'enabled -eq $true' | select SamAccountName | export-csv <file>.csv
+#Export all enabled 
+`PS> Get-ADUser -Filter 'enabled -eq $true' | select SamAccountName | export-csv <file>.csv`
