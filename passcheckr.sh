@@ -6,7 +6,7 @@
 # Kyle Colson - colsok
 # Last Updated: May 10, 2018
 # 
-# Syntax: ./nightshift.sh <username list>
+# Syntax: ./passcheckr.sh <username list>
 #
 # ##############################################
 # 
