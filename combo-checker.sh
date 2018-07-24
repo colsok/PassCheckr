@@ -1,9 +1,9 @@
 #/bin/bash
 #
-# Combo Checkr v1.0
+# Combo Checkr v1.1
 # 
 # Kyle Colson - colsok
-# Last Updated: May 15, 2018
+# Last Updated: July 24, 2018
 # 
 # Syntax: ./combo-checkr.sh <combo list>
 #
@@ -14,13 +14,14 @@
 ################################################
 ################################################
 
-# EDIT BELOW CONFIGURATION PER YOUR ORGANIZAION
+SERVER_IP=$(cat config.txt | grep SERVER_IP | cut -f 2 -d "=")
 
-SERVER_IP=10.1.1.1	#IP Address of your AD Domain Controller
+if [ "$SERVER_IP" == "1.1.1.1" ];then
+                echo "IP Address is default.. have you updated config.txt?"
+                echo "Quitting"
+                exit
+fi
 
-################################################
-### NO EDITS BELOW THIS LINE NECESSARY
-################################################
 
 if [ "$#" -ne 1 ];then
 		echo "Combo list missing."

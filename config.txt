@@ -1,0 +1,10 @@
+EDIT BELOW CONFIGURATION PER YOUR ORGANIZATION
+
+# IP Address of your AD Domain Controller
+SERVER_IP=1.1.1.1
+
+# How many attempts in a row to perform (good rule: put two less than your lockout policy) - default:3
+ATTEMPTS=3
+
+# How long to sleep before above # of attempts are made - default: 30m // 30 minutes
+SLEEP=30m

@@ -1,11 +1,14 @@
 # bin/bash
 #
-# PassCheckr v1.1
+# PassCheckr v1.2
 # aka Glorified Hydra Wrapper
 #
 # Kyle Colson - colsok
-# Last Updated: May 10, 2018
-# 
+# Last Updated: July 24, 2018
+#
+# NOTE:
+# Please set server IP address and attack rate settings in config.txt
+#
 # Syntax: ./passcheckr.sh <username list>
 #
 # ##############################################
@@ -19,24 +22,21 @@
 # 
 # Common vs. Custom Lists:
 # 
-# Common - Simple, reoccuring passwords. (e.g., Password123)
+# Common - Simple, reoccuring passwords. (e.g., Password123) 
 # Custom - Unique passwords. Discovered in the field or with knowledge of the business. (i.e., company name, location, etc.)
 #
 ################################################
 ################################################
- 
-# EDIT BELOW CONFIGURATION PER YOUR ORGANIZATION
 
-SERVER_IP=10.1.1.1	# IP Address of your AD Domain Controller
-ATTEMPTS=3		# How many attempts in a row to perform (good rule: put two less than your lockout policy) - default:3
-SLEEP=30m		# How long to sleep before above # of attempts are made - default:30m
+SERVER_IP=$(cat config.txt | grep SERVER_IP | cut -f 2 -d "=")
+ATTEMPTS=$(cat config.txt | grep ATTEMPTS | cut -f 2 -d "=")
+SLEEP=$(cat config.txt | grep SLEEP | cut -f 2 -d "=")
 
-
-################################################
-################################################
-## NO EDITS BELOW THIS LINE NECESSARY 
-################################################
-################################################
+if [ "$SERVER_IP" == "1.1.1.1" ];then
+                echo "IP Address is default.. have you updated config.txt?"
+                echo "Quitting"
+                exit
+fi
 
 if [ "$#" -ne 1 ];then
 		echo "Username input list missing."
@@ -44,6 +44,7 @@ if [ "$#" -ne 1 ];then
 		echo "./passcheckr.sh <username list>"
 		exit
 fi
+
 
 echo "IP Address to attack: "$SERVER_IP
 echo "Total repeated attempts before sleep: "$ATTEMPTS
