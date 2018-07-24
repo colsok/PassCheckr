@@ -54,9 +54,9 @@ environment.
 #COMBO LIST
 `hydra -C <list> <IP> smb `
 
-#NOTES
--V  ##Show each attempt
--o  ##OUTPUT FILE
+#NOTES 
+'-V'  Show each attempt
+'-o'  OUTPUT FILE
 
 #EXAMPLE
 `hydra -L users/all.lst -P passwords.txt 10.1.1.1 smb -V -o results.out`

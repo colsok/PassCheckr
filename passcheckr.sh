@@ -106,7 +106,7 @@ echo "test"$YEAR_CURRENT"!">>$PASS_FILE
 echo "TEST"$YEAR_CURRENT"!">>$PASS_FILE
 
 ##TAKE NIGHTLY JOB FILE AND SPLIT INTO x LINES EACH DEPENDING ON $ATTEMPTS
-cat $PASS_FILE | sort -u > sorted.lst
+cat $PASS_FILE | sort -u | awk 'NF' > sorted.lst
 mv sorted.lst $PASS_FILE
 split -l $ATTEMPTS -d $PASS_FILE
 
