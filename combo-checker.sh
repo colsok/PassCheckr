@@ -37,7 +37,7 @@ DATE=`date +%Y-%m-%d`
 hydra -C $INPUT_LIST $SERVER_IP smb -V -o tmp-combo.out
 
 cat tmp-combo.out | grep password | cut -d" " -f7,11 | sed s/\ /:/ > $DATE-combo.lst
-mv *-combo.lst PassCheckr/Reports/
+mv *-combo.lst Reports/
 rm tmp-combo.out
 
 echo "Complete!"
